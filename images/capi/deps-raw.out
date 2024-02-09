@@ -1,0 +1,13 @@
+hack/ensure-python.sh
+fatal: No names found, cannot describe anything.
+Checking if python is available
+Python 3.10.12
+hack/ensure-ansible.sh
+ansible [core 2.16.2]
+Starting galaxy collection install process
+Nothing to do. All requested collections are already installed. If you want to reinstall them, consider using `--force`.
+hack/ensure-packer.sh
+hack/ensure-goss.sh
+fatal: No names found, cannot describe anything.
+Right version of binary present
+/home/image-builder/image-builder/images/capi/.local/bin/packer init packer/config.pkr.hcl

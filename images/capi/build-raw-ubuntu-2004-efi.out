@@ -1,0 +1,452 @@
+hack/ensure-python.sh
+fatal: No names found, cannot describe anything.
+Checking if python is available
+Python 3.10.12
+hack/ensure-ansible.sh
+ansible [core 2.16.2]
+Starting galaxy collection install process
+Nothing to do. All requested collections are already installed. If you want to reinstall them, consider using `--force`.
+hack/ensure-packer.sh
+hack/ensure-goss.sh
+fatal: No names found, cannot describe anything.
+Right version of binary present
+/home/image-builder/image-builder/images/capi/.local/bin/packer init packer/config.pkr.hcl
+/home/image-builder/image-builder/images/capi/.local/bin/packer build -var-file="/home/image-builder/image-builder/images/capi/packer/config/kubernetes.json"  -var-file="/home/image-builder/image-builder/images/capi/packer/config/cni.json"  -var-file="/home/image-builder/image-builder/images/capi/packer/config/containerd.json"  -var-file="/home/image-builder/image-builder/images/capi/packer/config/wasm-shims.json"  -var-file="/home/image-builder/image-builder/images/capi/packer/config/ansible-args.json"  -var-file="/home/image-builder/image-builder/images/capi/packer/config/goss-args.json"  -var-file="/home/image-builder/image-builder/images/capi/packer/config/common.json"  -var-file="/home/image-builder/image-builder/images/capi/packer/config/additional_components.json"  -color=true -var-file="/home/image-builder/image-builder/images/capi/packer/raw/raw-ubuntu-2004-efi.json"  packer/raw/packer.json
+fatal: No names found, cannot describe anything.
+Warning: Bundled plugins used
+
+This template relies on the use of plugins bundled into the Packer binary.
+The practice of bundling external plugins into Packer will be removed in an
+upcoming version.
+
+To remove this warning and ensure builds keep working you can install these
+external plugins with the 'packer plugins install' command
+
+* packer plugins install github.com/hashicorp/qemu
+
+Alternatively, if you upgrade your templates to HCL2, you can use 'packer init'
+with a 'required_plugins' block to automatically install external plugins.
+
+You can try HCL2 by running 'packer hcl2_upgrade
+/home/image-builder/image-builder/images/capi/packer/raw/packer.json'
+
+
+[1;32mqemu: output will be in this color.[0m
+
+[1;32m==> qemu: Retrieving ISO[0m
+[1;32m==> qemu: Trying http://cdimage.ubuntu.com/ubuntu-legacy-server/releases/20.04/release/ubuntu-20.04.1-legacy-server-amd64.iso[0m
+[1;32m==> qemu: Trying http://cdimage.ubuntu.com/ubuntu-legacy-server/releases/20.04/release/ubuntu-20.04.1-legacy-server-amd64.iso?checksum=sha256%3Af11bda2f2caed8f420802b59f382c25160b114ccc665dbac9c5046e7fceaced2[0m
+[1;32m==> qemu: http://cdimage.ubuntu.com/ubuntu-legacy-server/releases/20.04/release/ubuntu-20.04.1-legacy-server-amd64.iso?checksum=sha256%3Af11bda2f2caed8f420802b59f382c25160b114ccc665dbac9c5046e7fceaced2 => /home/image-builder/.cache/packer/48e4ec4daa32571605576c5566f486133ecc271f.iso[0m
+[1;32m==> qemu: Starting HTTP server on port 8705[0m
+[1;32m==> qemu: Found port for communicator (SSH, WinRM, etc): 2863.[0m
+[1;32m==> qemu: Looking for available port between 5900 and 6000 on 127.0.0.1[0m
+[1;32m==> qemu: Starting VM, booting from CD-ROM[0m
+[0;32m    qemu: The VM will be run headless, without a GUI. If you want to
+    qemu: view the screen of the VM, connect via VNC without a password to
+    qemu: vnc://127.0.0.1:5982[0m
+[1;32m==> qemu: Waiting 10s for boot...[0m
+[1;32m==> qemu: Connecting to VM via VNC (127.0.0.1:5982)[0m
+[1;32m==> qemu: Typing the boot commands over VNC...[0m
+[0;32m    qemu: Not using a NetBridge -- skipping StepWaitGuestAddress[0m
+[1;32m==> qemu: Using SSH communicator to connect: 127.0.0.1[0m
+[1;32m==> qemu: Waiting for SSH to become available...[0m
+[1;32m==> qemu: Connected to SSH![0m
+[1;32m==> qemu: Provisioning with shell script: ./packer/files/flatcar/scripts/bootstrap-flatcar.sh[0m
+[1;32m==> qemu: Provisioning with Ansible...[0m
+[0;32m    qemu: Setting up proxy adapter for Ansible....[0m
+[1;32m==> qemu: Executing Ansible: ansible-playbook -e packer_build_name="qemu" -e packer_*****_type=qemu -e packer_http_addr=10.0.2.2:8705 --ssh-extra-args '-o IdentitiesOnly=yes' --extra-vars containerd_url=https://github.com/containerd/containerd/releases/download/v1.7.13/cri-containerd-cni-1.7.13-linux-amd64.tar.gz containerd_sha256=9be621c0206b5c20a1dea05fae12fc698e5083cc81f65c9d918c644090696d19 pause_image=registry.k8s.io/pause:3.9 containerd_additional_settings= containerd_cri_socket=/var/run/containerd/containerd.sock containerd_version=1.7.13 containerd_wasm_shims_url=https://github.com/deislabs/containerd-wasm-shims/releases/download/v0.10.0/containerd-wasm-shims-<RTVERSION>-<SHIM>-linux-x86_64.tar.gz containerd_wasm_shims_version=v0.10.0 containerd_wasm_shims_sha256={"lunatic":"2f49b1dd1a80d3040d61fe7cd1d7ce0629e1cf13b0743f67bc6ba83c52758f4c","slight":"6c2a5c23c6bb4cf91a14b0e6d4366164ef0adc62d0e487353e98ae92180dbf59","spin":"071b611ef1dbde69d7bbff17e28a851117184976b64ebcf081d67ad6c2281da7","wws":"70dd56bbc5f148be7dab65f626eb3cec692b1df87599465b33cfa45861a55364"} containerd_wasm_shims_runtimes="" containerd_wasm_shims_runtime_versions="{"lunatic":"v1","slight":"v1","spin":"v2","wws":"v1"}" crictl_url=https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.26.0/crictl-v1.26.0-linux-amd64.tar.gz crictl_sha256=https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.26.0/crictl-v1.26.0-linux-amd64.tar.gz.sha256 crictl_source_type=pkg custom_role_names="" firstboot_custom_roles_pre="" firstboot_custom_roles_post="" node_custom_roles_pre="" node_custom_roles_post="" disable_public_repos=false extra_debs="" extra_repos="" extra_rpms="" http_proxy= https_proxy= kubeadm_template=etc/kubeadm.yml kubernetes_apiserver_port=6443 kubernetes_cni_http_source=https://github.com/containernetworking/plugins/releases/download kubernetes_cni_http_checksum=sha256:https://storage.googleapis.com/k8s-artifacts-cni/release/v1.2.0/cni-plugins-linux-amd64-v1.2.0.tgz.sha256 kubernetes_goarch=amd64 kubernetes_http_source=https://dl.k8s.io/release kubernetes_container_registry=registry.k8s.io kubernetes_rpm_repo=https://pkgs.k8s.io/core:/stable:/v1.26/rpm/ kubernetes_rpm_gpg_key=https://pkgs.k8s.io/core:/stable:/v1.26/rpm/repodata/repomd.xml.key kubernetes_rpm_gpg_check=True kubernetes_deb_repo=https://pkgs.k8s.io/core:/stable:/v1.26/deb/ kubernetes_deb_gpg_key=https://pkgs.k8s.io/core:/stable:/v1.26/deb/Release.key kubernetes_cni_deb_version= kubernetes_cni_rpm_version= kubernetes_cni_semver=v1.2.0 kubernetes_cni_source_type=pkg kubernetes_semver=v1.26.7 kubernetes_source_type=pkg kubernetes_load_additional_imgs=false kubernetes_deb_version=1.26.7-1.1 kubernetes_rpm_version=1.26.7 no_proxy= pip_conf_file= python_path= redhat_epel_rpm=https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm epel_rpm_gpg_key= reenable_public_repos=true remove_extra_repos=false systemd_prefix=/usr/lib/systemd sysusr_prefix=/usr sysusrlocal_prefix=/usr/local load_additional_components=false additional_registry_images=false additional_registry_images_list= additional_url_images=false additional_url_images_list= additional_executables=false additional_executables_list= additional_executables_destination_path= additional_s3=false build_target=raw amazon_ssm_agent_rpm= enable_containerd_audit= kubernetes_enable_automatic_resource_sizing= --extra-vars ansible_python_interpreter=/usr/bin/python3 --extra-vars  --scp-extra-args  -e ansible_ssh_private_key_file=/tmp/ansible-key2706887562 -i /tmp/packer-provisioner-ansible2134182935 /home/image-*****/image-*****/images/capi/ansible/firstboot.yml[0m
+[0;32m    qemu:[0m
+[0;32m    qemu: PLAY [all] *********************************************************************[0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [Gathering Facts] *********************************************************[0m
+[0;32m    qemu: ok: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [include_role : firstboot] ************************************************[0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [setup : Put templated sources.list in place] *****************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [setup : Put templated apt.conf.d/90proxy in place when defined] **********[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [setup : Perform a dist-upgrade] ******************************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [setup : Install baseline dependencies] ***********************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [setup : Install extra debs] **********************************************[0m
+[0;32m    qemu: ok: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [setup : Install pinned debs] *********************************************[0m
+[0;32m    qemu: ok: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [firstboot : include_tasks] ***********************************************[0m
+[0;32m    qemu: included: /home/image-builder/image-builder/images/capi/ansible/roles/firstboot/tasks/qemu.yml for default[0m
+[0;32m    qemu:[0m
+[0;32m    qemu: PLAY RECAP *********************************************************************[0m
+[0;32m    qemu: default                    : ok=8    changed=4    unreachable=0    failed=0    skipped=87   rescued=0    ignored=0[0m
+[0;32m    qemu:[0m
+[1;32m==> qemu: Provisioning with shell script: /tmp/packer-shell222640132[0m
+[1;32m==> qemu: Provisioning with Ansible...[0m
+[0;32m    qemu: Setting up proxy adapter for Ansible....[0m
+[1;32m==> qemu: Executing Ansible: ansible-playbook -e packer_build_name="qemu" -e packer_*****_type=qemu -e packer_http_addr=10.0.2.2:8705 --ssh-extra-args '-o IdentitiesOnly=yes' --extra-vars containerd_url=https://github.com/containerd/containerd/releases/download/v1.7.13/cri-containerd-cni-1.7.13-linux-amd64.tar.gz containerd_sha256=9be621c0206b5c20a1dea05fae12fc698e5083cc81f65c9d918c644090696d19 pause_image=registry.k8s.io/pause:3.9 containerd_additional_settings= containerd_cri_socket=/var/run/containerd/containerd.sock containerd_version=1.7.13 containerd_wasm_shims_url=https://github.com/deislabs/containerd-wasm-shims/releases/download/v0.10.0/containerd-wasm-shims-<RTVERSION>-<SHIM>-linux-x86_64.tar.gz containerd_wasm_shims_version=v0.10.0 containerd_wasm_shims_sha256={"lunatic":"2f49b1dd1a80d3040d61fe7cd1d7ce0629e1cf13b0743f67bc6ba83c52758f4c","slight":"6c2a5c23c6bb4cf91a14b0e6d4366164ef0adc62d0e487353e98ae92180dbf59","spin":"071b611ef1dbde69d7bbff17e28a851117184976b64ebcf081d67ad6c2281da7","wws":"70dd56bbc5f148be7dab65f626eb3cec692b1df87599465b33cfa45861a55364"} containerd_wasm_shims_runtimes="" containerd_wasm_shims_runtime_versions="{"lunatic":"v1","slight":"v1","spin":"v2","wws":"v1"}" crictl_url=https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.26.0/crictl-v1.26.0-linux-amd64.tar.gz crictl_sha256=https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.26.0/crictl-v1.26.0-linux-amd64.tar.gz.sha256 crictl_source_type=pkg custom_role_names="" firstboot_custom_roles_pre="" firstboot_custom_roles_post="" node_custom_roles_pre="" node_custom_roles_post="" disable_public_repos=false extra_debs="" extra_repos="" extra_rpms="" http_proxy= https_proxy= kubeadm_template=etc/kubeadm.yml kubernetes_apiserver_port=6443 kubernetes_cni_http_source=https://github.com/containernetworking/plugins/releases/download kubernetes_cni_http_checksum=sha256:https://storage.googleapis.com/k8s-artifacts-cni/release/v1.2.0/cni-plugins-linux-amd64-v1.2.0.tgz.sha256 kubernetes_goarch=amd64 kubernetes_http_source=https://dl.k8s.io/release kubernetes_container_registry=registry.k8s.io kubernetes_rpm_repo=https://pkgs.k8s.io/core:/stable:/v1.26/rpm/ kubernetes_rpm_gpg_key=https://pkgs.k8s.io/core:/stable:/v1.26/rpm/repodata/repomd.xml.key kubernetes_rpm_gpg_check=True kubernetes_deb_repo=https://pkgs.k8s.io/core:/stable:/v1.26/deb/ kubernetes_deb_gpg_key=https://pkgs.k8s.io/core:/stable:/v1.26/deb/Release.key kubernetes_cni_deb_version= kubernetes_cni_rpm_version= kubernetes_cni_semver=v1.2.0 kubernetes_cni_source_type=pkg kubernetes_semver=v1.26.7 kubernetes_source_type=pkg kubernetes_load_additional_imgs=false kubernetes_deb_version=1.26.7-1.1 kubernetes_rpm_version=1.26.7 no_proxy= pip_conf_file= python_path= redhat_epel_rpm=https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm epel_rpm_gpg_key= reenable_public_repos=true remove_extra_repos=false systemd_prefix=/usr/lib/systemd sysusr_prefix=/usr sysusrlocal_prefix=/usr/local load_additional_components=false additional_registry_images=false additional_registry_images_list= additional_url_images=false additional_url_images_list= additional_executables=false additional_executables_list= additional_executables_destination_path= additional_s3=false build_target=raw amazon_ssm_agent_rpm= enable_containerd_audit= kubernetes_enable_automatic_resource_sizing= --extra-vars ansible_python_interpreter=/usr/bin/python3 --extra-vars  --scp-extra-args  -e ansible_ssh_private_key_file=/tmp/ansible-key3790874249 -i /tmp/packer-provisioner-ansible4266317334 /home/image-*****/image-*****/images/capi/ansible/node.yml[0m
+[0;32m    qemu:[0m
+[0;32m    qemu: PLAY [all] *********************************************************************[0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [Gathering Facts] *********************************************************[0m
+[0;32m    qemu: ok: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [include_role : node] *****************************************************[0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [node : Ensure overlay module is present] *********************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [node : Ensure br_netfilter module is present] ****************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [node : Persist required kernel modules] **********************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [node : Set and persist kernel params] ************************************[0m
+[0;32m    qemu: changed: [default] => (item={'param': 'net.bridge.bridge-nf-call-iptables', 'val': 1})[0m
+[0;32m    qemu: changed: [default] => (item={'param': 'net.bridge.bridge-nf-call-ip6tables', 'val': 1})[0m
+[0;32m    qemu: changed: [default] => (item={'param': 'net.ipv4.ip_forward', 'val': 1})[0m
+[0;32m    qemu: changed: [default] => (item={'param': 'net.ipv6.conf.all.forwarding', 'val': 1})[0m
+[0;32m    qemu: changed: [default] => (item={'param': 'net.ipv6.conf.all.disable_ipv6', 'val': 0})[0m
+[0;32m    qemu: changed: [default] => (item={'param': 'net.ipv4.tcp_congestion_control', 'val': 'bbr'})[0m
+[0;32m    qemu: changed: [default] => (item={'param': 'vm.overcommit_memory', 'val': 1})[0m
+[0;32m    qemu: changed: [default] => (item={'param': 'kernel.panic', 'val': 10})[0m
+[0;32m    qemu: changed: [default] => (item={'param': 'kernel.panic_on_oops', 'val': 1})[0m
+[0;32m    qemu: changed: [default] => (item={'param': 'fs.inotify.max_user_instances', 'val': 8192})[0m
+[0;32m    qemu: changed: [default] => (item={'param': 'fs.inotify.max_user_watches', 'val': 524288})[0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [node : Ensure auditd is running and comes on at reboot] ******************[0m
+[0;32m    qemu: ok: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [node : Ensure reverse packet filtering is set as strict] *****************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [node : Copy udev etcd network tuning rules] ******************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [node : Copy etcd network tuning script] **********************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [include_role : providers] ************************************************[0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [providers : include_tasks] ***********************************************[0m
+[0;32m    qemu: included: /home/image-builder/image-builder/images/capi/ansible/roles/providers/tasks/raw.yml for default[0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [providers : Install cloud-init packages] *********************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [providers : Disable Hyper-V KVP protocol daemon on Ubuntu] ***************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [providers : Creates unit file directory for cloud-final] *****************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [providers : Create cloud-final boot order drop in file] ******************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [providers : Creates unit file directory for cloud-config] ****************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [providers : Create cloud-config boot order drop in file] *****************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [providers : Make sure all cloud init services are enabled] ***************[0m
+[0;32m    qemu: ok: [default] => (item=cloud-final)[0m
+[0;32m    qemu: ok: [default] => (item=cloud-config)[0m
+[0;32m    qemu: ok: [default] => (item=cloud-init)[0m
+[0;32m    qemu: ok: [default] => (item=cloud-init-local)[0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [providers : Create cloud-init config file] *******************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [providers : Set cloudinit feature flags] *********************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [include_role : containerd] ***********************************************[0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [containerd : Install libseccomp2 package] ********************************[0m
+[0;32m    qemu: ok: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [containerd : Download containerd] ****************************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [containerd : Create a directory if it does not exist] ********************[0m
+[0;32m    qemu: ok: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [containerd : Unpack containerd] ******************************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [containerd : Delete /opt/cni directory] **********************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [containerd : Delete /etc/cni directory] **********************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [containerd : Create unit file directory] *********************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [containerd : Create containerd memory pressure drop-in file] *************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [containerd : Create containerd max tasks drop-in file] *******************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [containerd : Create containerd http proxy conf file if needed] ***********[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [containerd : Creates containerd config directory] ************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [containerd : Copy in containerd config file etc/containerd/config.toml] ***[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [containerd : Copy in crictl config] **************************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [containerd : Start containerd service] ***********************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [containerd : Delete containerd tarball] **********************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [include_role : kubernetes] ***********************************************[0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [kubernetes : Add the Kubernetes repo key] ********************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [kubernetes : Add the Kubernetes repo] ************************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [kubernetes : Install Kubernetes] *****************************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [kubernetes : Symlink cri-tools] ******************************************[0m
+[0;32m    qemu: changed: [default] => (item=ctr)[0m
+[0;32m    qemu: changed: [default] => (item=crictl)[0m
+[0;32m    qemu: changed: [default] => (item=critest)[0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [kubernetes : Create kubelet default config file] *************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [kubernetes : Enable kubelet service] *************************************[0m
+[0;32m    qemu: ok: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [kubernetes : Create the Kubernetes version file] *************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [kubernetes : Create libexec directory] ***********************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [kubernetes : Generate kubectl bash completion] ***************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [kubernetes : Generate kubeadm bash completion] ***************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [kubernetes : Generate crictl bash completion] ****************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [kubernetes : Set KUBECONFIG variable and alias] **************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [kubernetes : Check if Kubernetes container registry is using Amazon ECR] ***[0m
+[0;32m    qemu: ok: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [kubernetes : Create kubeadm config file] *********************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [kubernetes : Kubeadm pull images] ****************************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [kubernetes : Delete kubeadm config] **************************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [include_role : sysprep] **************************************************[0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [sysprep : Define file modes] *********************************************[0m
+[0;32m    qemu: ok: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [sysprep : Pin all installed packages with apt-mark] **********************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [sysprep : Remove templated apt.conf.d/90proxy used for http(s)_proxy support] ***[0m
+[0;32m    qemu: ok: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [sysprep : Stop auditing] *************************************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [sysprep : Remove apt package caches] *************************************[0m
+[0;32m    qemu: ok: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [sysprep : Remove apt package lists] **************************************[0m
+[0;32m    qemu: changed: [default] => (item={'path': '/var/lib/apt/lists', 'state': 'absent', 'mode': '0755'})[0m
+[0;32m    qemu: changed: [default] => (item={'path': '/var/lib/apt/lists', 'state': 'directory', 'mode': '0755'})[0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [sysprep : Disable apt-daily services] ************************************[0m
+[0;32m    qemu: changed: [default] => (item=apt-daily.timer)[0m
+[0;32m    qemu: changed: [default] => (item=apt-daily-upgrade.timer)[0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [sysprep : Get installed packages] ****************************************[0m
+[0;32m    qemu: ok: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [sysprep : Disable unattended upgrades if installed] **********************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [sysprep : Reset network interface IDs] ***********************************[0m
+[0;32m    qemu: ok: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [sysprep : Remove containerd http proxy conf file if needed] **************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [sysprep : Truncate machine id] *******************************************[0m
+[0;32m    qemu: changed: [default] => (item={'path': '/etc/machine-id', 'state': 'absent', 'mode': '0644'})[0m
+[0;32m    qemu: changed: [default] => (item={'path': '/etc/machine-id', 'state': 'touch', 'mode': '0644'})[0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [sysprep : Truncate hostname file] ****************************************[0m
+[0;32m    qemu: changed: [default] => (item={'path': '/etc/hostname', 'state': 'absent', 'mode': '0644'})[0m
+[0;32m    qemu: changed: [default] => (item={'path': '/etc/hostname', 'state': 'touch', 'mode': '0644'})[0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [sysprep : Set hostname] **************************************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [sysprep : Reset hosts file] **********************************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [sysprep : Truncate audit logs] *******************************************[0m
+[0;32m    qemu: changed: [default] => (item={'path': '/var/log/wtmp', 'state': 'absent', 'mode': '0664'})[0m
+[0;32m    qemu: changed: [default] => (item={'path': '/var/log/lastlog', 'state': 'absent', 'mode': '0664'})[0m
+[0;32m    qemu: changed: [default] => (item={'path': '/var/log/wtmp', 'state': 'touch', 'mode': '0664'})[0m
+[0;32m    qemu: changed: [default] => (item={'path': '/var/log/lastlog', 'state': 'touch', 'mode': '0664'})[0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [sysprep : Remove cloud-init lib dir and logs] ****************************[0m
+[0;32m    qemu: ok: [default] => (item=/var/lib/cloud)[0m
+[0;32m    qemu: ok: [default] => (item=/var/log/cloud-init.log)[0m
+[0;32m    qemu: ok: [default] => (item=/var/log/cloud-init-output.log)[0m
+[0;32m    qemu: changed: [default] => (item=/var/run/cloud-init)[0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [sysprep : Reset cloud-init] **********************************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [sysprep : Remove cloud-init.disabled] ************************************[0m
+[0;32m    qemu: ok: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [sysprep : Find temp files] ***********************************************[0m
+[0;32m    qemu: ok: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [sysprep : Reset temp space] **********************************************[0m
+[0;32m    qemu: changed: [default] => (item={'path': '/tmp/systemd-private-0b32bd9273c44c698d1f538abeb84cb5-systemd-hostnamed.service-QZAiei', 'mode': '0700', 'isdir': True, 'ischr': False, 'isblk': False, 'isreg': False, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 0, 'gid': 0, 'size': 4096, 'inode': 546182, 'dev': 2050, 'nlink': 3, 'atime': 1707482803.990897, 'mtime': 1707482803.990897, 'ctime': 1707482803.990897, 'gr_name': 'root', 'pw_name': 'root', 'wusr': True, 'rusr': True, 'xusr': True, 'wgrp': False, 'rgrp': False, 'xgrp': False, 'woth': False, 'roth': False, 'xoth': False, 'isuid': False, 'isgid': False})[0m
+[0;32m    qemu: changed: [default] => (item={'path': '/tmp/systemd-private-0b32bd9273c44c698d1f538abeb84cb5-systemd-logind.service-ZeAHgj', 'mode': '0700', 'isdir': True, 'ischr': False, 'isblk': False, 'isreg': False, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 0, 'gid': 0, 'size': 4096, 'inode': 546161, 'dev': 2050, 'nlink': 3, 'atime': 1707482595.244, 'mtime': 1707482595.244, 'ctime': 1707482595.244, 'gr_name': 'root', 'pw_name': 'root', 'wusr': True, 'rusr': True, 'xusr': True, 'wgrp': False, 'rgrp': False, 'xgrp': False, 'woth': False, 'roth': False, 'xoth': False, 'isuid': False, 'isgid': False})[0m
+[0;32m    qemu: changed: [default] => (item={'path': '/tmp/systemd-private-0b32bd9273c44c698d1f538abeb84cb5-systemd-resolved.service-wYCTZi', 'mode': '0700', 'isdir': True, 'ischr': False, 'isblk': False, 'isreg': False, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 0, 'gid': 0, 'size': 4096, 'inode': 546157, 'dev': 2050, 'nlink': 3, 'atime': 1707482594.98, 'mtime': 1707482594.98, 'ctime': 1707482594.98, 'gr_name': 'root', 'pw_name': 'root', 'wusr': True, 'rusr': True, 'xusr': True, 'wgrp': False, 'rgrp': False, 'xgrp': False, 'woth': False, 'roth': False, 'xoth': False, 'isuid': False, 'isgid': False})[0m
+[0;32m    qemu: changed: [default] => (item={'path': '/tmp/systemd-private-0b32bd9273c44c698d1f538abeb84cb5-chrony.service-WGKEdh', 'mode': '0700', 'isdir': True, 'ischr': False, 'isblk': False, 'isreg': False, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 0, 'gid': 0, 'size': 4096, 'inode': 546159, 'dev': 2050, 'nlink': 3, 'atime': 1707482595.428, 'mtime': 1707482595.428, 'ctime': 1707482595.428, 'gr_name': 'root', 'pw_name': 'root', 'wusr': True, 'rusr': True, 'xusr': True, 'wgrp': False, 'rgrp': False, 'xgrp': False, 'woth': False, 'roth': False, 'xoth': False, 'isuid': False, 'isgid': False})[0m
+[0;32m    qemu: ok: [default] => (item={'path': '/tmp/ansible_find_payload_8i8yc9ys', 'mode': '0700', 'isdir': True, 'ischr': False, 'isblk': False, 'isreg': False, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 0, 'gid': 0, 'size': 4096, 'inode': 546181, 'dev': 2050, 'nlink': 2, 'atime': 1707482814.1748207, 'mtime': 1707482814.1748207, 'ctime': 1707482814.1748207, 'gr_name': 'root', 'pw_name': 'root', 'wusr': True, 'rusr': True, 'xusr': True, 'wgrp': False, 'rgrp': False, 'xgrp': False, 'woth': False, 'roth': False, 'xoth': False, 'isuid': False, 'isgid': False})[0m
+[0;32m    qemu: changed: [default] => (item={'path': '/var/tmp/systemd-private-0b32bd9273c44c698d1f538abeb84cb5-systemd-hostnamed.service-xD8irh', 'mode': '0700', 'isdir': True, 'ischr': False, 'isblk': False, 'isreg': False, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 0, 'gid': 0, 'size': 4096, 'inode': 260143, 'dev': 2050, 'nlink': 3, 'atime': 1707482803.990897, 'mtime': 1707482803.990897, 'ctime': 1707482803.990897, 'gr_name': 'root', 'pw_name': 'root', 'wusr': True, 'rusr': True, 'xusr': True, 'wgrp': False, 'rgrp': False, 'xgrp': False, 'woth': False, 'roth': False, 'xoth': False, 'isuid': False, 'isgid': False})[0m
+[0;32m    qemu: changed: [default] => (item={'path': '/var/tmp/systemd-private-0b32bd9273c44c698d1f538abeb84cb5-chrony.service-KshvBh', 'mode': '0700', 'isdir': True, 'ischr': False, 'isblk': False, 'isreg': False, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 0, 'gid': 0, 'size': 4096, 'inode': 266054, 'dev': 2050, 'nlink': 3, 'atime': 1707482595.428, 'mtime': 1707482595.428, 'ctime': 1707482595.428, 'gr_name': 'root', 'pw_name': 'root', 'wusr': True, 'rusr': True, 'xusr': True, 'wgrp': False, 'rgrp': False, 'xgrp': False, 'woth': False, 'roth': False, 'xoth': False, 'isuid': False, 'isgid': False})[0m
+[0;32m    qemu: changed: [default] => (item={'path': '/var/tmp/systemd-private-0b32bd9273c44c698d1f538abeb84cb5-systemd-logind.service-NmXcIh', 'mode': '0700', 'isdir': True, 'ischr': False, 'isblk': False, 'isreg': False, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 0, 'gid': 0, 'size': 4096, 'inode': 266161, 'dev': 2050, 'nlink': 3, 'atime': 1707482595.244, 'mtime': 1707482595.244, 'ctime': 1707482595.244, 'gr_name': 'root', 'pw_name': 'root', 'wusr': True, 'rusr': True, 'xusr': True, 'wgrp': False, 'rgrp': False, 'xgrp': False, 'woth': False, 'roth': False, 'xoth': False, 'isuid': False, 'isgid': False})[0m
+[0;32m    qemu: changed: [default] => (item={'path': '/var/tmp/systemd-private-0b32bd9273c44c698d1f538abeb84cb5-systemd-resolved.service-ZvW9Fh', 'mode': '0700', 'isdir': True, 'ischr': False, 'isblk': False, 'isreg': False, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 0, 'gid': 0, 'size': 4096, 'inode': 261160, 'dev': 2050, 'nlink': 3, 'atime': 1707482594.984, 'mtime': 1707482594.984, 'ctime': 1707482594.984, 'gr_name': 'root', 'pw_name': 'root', 'wusr': True, 'rusr': True, 'xusr': True, 'wgrp': False, 'rgrp': False, 'xgrp': False, 'woth': False, 'roth': False, 'xoth': False, 'isuid': False, 'isgid': False})[0m
+[0;32m    qemu: [WARNING]: Skipped '/run/netplan' path due to this access issue: '/run/netplan'[0m
+[0;32m    qemu: is not a directory[0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [sysprep : Find netplan files] ********************************************[0m
+[0;32m    qemu: ok: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [sysprep : Delete netplan files] ******************************************[0m
+[0;32m    qemu: changed: [default] => (item={'path': '/etc/netplan/01-netcfg.yaml', 'mode': '0644', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 0, 'gid': 0, 'size': 193, 'inode': 130185, 'dev': 2050, 'nlink': 1, 'atime': 1707482270.9871142, 'mtime': 1707481959.791396, 'ctime': 1707481959.791396, 'gr_name': 'root', 'pw_name': 'root', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})[0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [sysprep : Find SSH host keys] ********************************************[0m
+[0;32m    qemu: ok: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [sysprep : Remove SSH host keys] ******************************************[0m
+[0;32m    qemu: changed: [default] => (item={'path': '/etc/ssh/ssh_host_ed25519_key', 'mode': '0600', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 0, 'gid': 0, 'size': 411, 'inode': 140526, 'dev': 2050, 'nlink': 1, 'atime': 1707482213.64, 'mtime': 1707482156.679396, 'ctime': 1707482156.679396, 'gr_name': 'root', 'pw_name': 'root', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': False, 'xgrp': False, 'woth': False, 'roth': False, 'xoth': False, 'isuid': False, 'isgid': False})[0m
+[0;32m    qemu: changed: [default] => (item={'path': '/etc/ssh/ssh_host_ecdsa_key.pub', 'mode': '0644', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 0, 'gid': 0, 'size': 176, 'inode': 140525, 'dev': 2050, 'nlink': 1, 'atime': 1707482156.675396, 'mtime': 1707482156.671396, 'ctime': 1707482156.671396, 'gr_name': 'root', 'pw_name': 'root', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})[0m
+[0;32m    qemu: changed: [default] => (item={'path': '/etc/ssh/ssh_host_ed25519_key.pub', 'mode': '0644', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 0, 'gid': 0, 'size': 96, 'inode': 140527, 'dev': 2050, 'nlink': 1, 'atime': 1707482156.683396, 'mtime': 1707482156.679396, 'ctime': 1707482156.679396, 'gr_name': 'root', 'pw_name': 'root', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})[0m
+[0;32m    qemu: changed: [default] => (item={'path': '/etc/ssh/ssh_host_rsa_key.pub', 'mode': '0644', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 0, 'gid': 0, 'size': 568, 'inode': 140523, 'dev': 2050, 'nlink': 1, 'atime': 1707482156.667396, 'mtime': 1707482156.663396, 'ctime': 1707482156.663396, 'gr_name': 'root', 'pw_name': 'root', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})[0m
+[0;32m    qemu: changed: [default] => (item={'path': '/etc/ssh/ssh_host_ecdsa_key', 'mode': '0600', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 0, 'gid': 0, 'size': 505, 'inode': 140524, 'dev': 2050, 'nlink': 1, 'atime': 1707482213.624, 'mtime': 1707482156.671396, 'ctime': 1707482156.671396, 'gr_name': 'root', 'pw_name': 'root', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': False, 'xgrp': False, 'woth': False, 'roth': False, 'xoth': False, 'isuid': False, 'isgid': False})[0m
+[0;32m    qemu: changed: [default] => (item={'path': '/etc/ssh/ssh_host_rsa_key', 'mode': '0600', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 0, 'gid': 0, 'size': 2602, 'inode': 140522, 'dev': 2050, 'nlink': 1, 'atime': 1707482213.588, 'mtime': 1707482156.663396, 'ctime': 1707482156.663396, 'gr_name': 'root', 'pw_name': 'root', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': False, 'xgrp': False, 'woth': False, 'roth': False, 'xoth': False, 'isuid': False, 'isgid': False})[0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [sysprep : Remove SSH authorized users] ***********************************[0m
+[0;32m    qemu: ok: [default] => (item={'path': '/root/.ssh/authorized_keys'})[0m
+[0;32m    qemu: ok: [default] => (item={'path': '/home/builder/.ssh/authorized_keys'})[0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [sysprep : Truncate all remaining log files in /var/log] ******************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [sysprep : Delete all logrotated logs] ************************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [sysprep : Truncate shell history] ****************************************[0m
+[0;32m    qemu: ok: [default] => (item={'path': '/root/.bash_history'})[0m
+[0;32m    qemu: ok: [default] => (item={'path': '/home/builder/.bash_history'})[0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [sysprep : Rotate journalctl to archive logs] *****************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [sysprep : Remove archived journalctl logs] *******************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [sysprep : Start fstrim] **************************************************[0m
+[0;32m    qemu: changed: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: TASK [sysprep : Start ssh] *****************************************************[0m
+[0;32m    qemu: ok: [default][0m
+[0;32m    qemu:[0m
+[0;32m    qemu: PLAY RECAP *********************************************************************[0m
+[0;32m    qemu: default                    : ok=83   changed=63   unreachable=0    failed=0    skipped=368  rescued=0    ignored=0[0m
+[0;32m    qemu:[0m
+[1;32m==> qemu: Provisioning with Goss[0m
+[1;32m==> qemu: Configured to run on Linux[0m
+[0;32m    qemu: Creating directory: /tmp/goss[0m
+[0;32m    qemu: Installing Goss from, https://github.com/aelsabbahy/goss/releases/download/v0.3.16/goss-linux-amd64[0m
+[0;32m    qemu: Downloading Goss to /tmp/goss-0.3.16-linux-amd64[0m
+[1;31m==> qemu:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current[0m
+[1;31m==> qemu:                                  Dload  Upload   Total   Spent    Left  Speed[0m
+[1;31m==> qemu:   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0[0m
+[1;31m==> qemu:   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0[0m
+[1;31m==> qemu: 100 11.8M  100 11.8M    0     0  13.4M      0 --:--:-- --:--:-- --:--:-- 13.4M[0m
+[0;32m    qemu: goss version v0.3.16[0m
+[1;32m==> qemu: Uploading goss tests...[0m
+[0;32m    qemu: Uploading vars file packer/goss/goss-vars.yaml[0m
+[0;32m    qemu: Inline variables are --vars-inline '{"ARCH":"amd64","OS":"ubuntu","PROVIDER":"raw","containerd_version":"1.7.13","kubernetes_cni_deb_version":"","kubernetes_cni_rpm_version":"","kubernetes_cni_source_type":"pkg","kubernetes_cni_version":"1.2.0","kubernetes_deb_version":"1.26.7-1.1","kubernetes_rpm_version":"1.26.7","kubernetes_source_type":"pkg","kubernetes_version":"1.26.7"}'[0m
+[0;32m    qemu: Uploading Dir packer/goss[0m
+[0;32m    qemu: Creating directory: /tmp/goss/goss[0m
+[1;32m==> qemu: 
+==> qemu: 
+==> qemu: 
+==> qemu: Running goss tests...[0m
+[1;32m==> qemu: Running GOSS render command: cd /tmp/goss &&  /tmp/goss-0.3.16-linux-amd64 --gossfile goss/goss.yaml --vars /tmp/goss/goss-vars.yaml --vars-inline '{"ARCH":"amd64","OS":"ubuntu","PROVIDER":"raw","containerd_version":"1.7.13","kubernetes_cni_deb_version":"","kubernetes_cni_rpm_version":"","kubernetes_cni_source_type":"pkg","kubernetes_cni_version":"1.2.0","kubernetes_deb_version":"1.26.7-1.1","kubernetes_rpm_version":"1.26.7","kubernetes_source_type":"pkg","kubernetes_version":"1.26.7"}' render > /tmp/goss-spec.yaml[0m
+[1;31m==> qemu: could not read json data in goss/goss-package.yaml: template: test:62:26: executing "test" at <.Vars.OS_VERSION>: map has no entry for key "OS_VERSION"[0m
+[1;32m==> qemu: Goss render failed[0m
+[1;32m==> qemu: Inspect mode on : proceeding without failing Packer[0m
+[1;32m==> qemu: Running GOSS render debug command: cd /tmp/goss &&  /tmp/goss-0.3.16-linux-amd64 --gossfile goss/goss.yaml --vars /tmp/goss/goss-vars.yaml --vars-inline '{"ARCH":"amd64","OS":"ubuntu","PROVIDER":"raw","containerd_version":"1.7.13","kubernetes_cni_deb_version":"","kubernetes_cni_rpm_version":"","kubernetes_cni_source_type":"pkg","kubernetes_cni_version":"1.2.0","kubernetes_deb_version":"1.26.7-1.1","kubernetes_rpm_version":"1.26.7","kubernetes_source_type":"pkg","kubernetes_version":"1.26.7"}' render -d > /tmp/debug-goss-spec.yaml[0m
+[1;31m==> qemu: could not read json data in goss/goss-package.yaml: template: test:62:26: executing "test" at <.Vars.OS_VERSION>: map has no entry for key "OS_VERSION"[0m
+[1;32m==> qemu: Goss render debug failed[0m
+[1;32m==> qemu: Inspect mode on : proceeding without failing Packer[0m
+[1;32m==> qemu: Running GOSS validate command: cd /tmp/goss && sudo  /tmp/goss-0.3.16-linux-amd64 --gossfile goss/goss.yaml --vars /tmp/goss/goss-vars.yaml --vars-inline '{"ARCH":"amd64","OS":"ubuntu","PROVIDER":"raw","containerd_version":"1.7.13","kubernetes_cni_deb_version":"","kubernetes_cni_rpm_version":"","kubernetes_cni_source_type":"pkg","kubernetes_cni_version":"1.2.0","kubernetes_deb_version":"1.26.7-1.1","kubernetes_rpm_version":"1.26.7","kubernetes_source_type":"pkg","kubernetes_version":"1.26.7"}' validate --retry-timeout 0s --sleep 1s -f json -o pretty[0m
+[0;32m    qemu: Error: could not read json data in goss/goss-package.yaml: template: test:62:26: executing "test" at <.Vars.OS_VERSION>: map has no entry for key "OS_VERSION"[0m
+[1;32m==> qemu: Goss validate failed[0m
+[1;32m==> qemu: Inspect mode on : proceeding without failing Packer[0m
+[1;32m==> qemu: 
+==> qemu: 
+==> qemu: 
+==> qemu: Downloading spec file and debug info[0m
+[0;32m    qemu: Downloading Goss specs from, /tmp/goss-spec.yaml and /tmp/debug-goss-spec.yaml to current dir[0m
+[1;32m==> qemu: Gracefully halting virtual machine...[0m
+[1;32m==> qemu: Running post-processor: compress[0m
+[1;32m==> qemu (compress): Using pgzip compression with 8 cores for ./output/ubuntu-2004-kube-v1.26.7.gz[0m
+[1;32m==> qemu (compress): Archiving output/ubuntu-2004-kube-v1.26.7/ubuntu-2004-kube-v1.26.7 with pgzip[0m
+[1;32m==> qemu (compress): Archive ./output/ubuntu-2004-kube-v1.26.7.gz completed[0m
+[1;32m==> qemu: Running post-processor: custom-post-processor (type shell-local)[0m
+[1;32m==> qemu (shell-local): Running local shell script: /tmp/packer-shell578573779[0m
+[1;32mBuild 'qemu' finished after 18 minutes 3 seconds.[0m
+
+==> Wait completed after 18 minutes 3 seconds
+
+==> Builds finished. The artifacts of successful builds are:
+--> qemu: VM files in directory: ./output/ubuntu-2004-kube-v1.26.7
+--> qemu: compressed artifacts in: ./output/ubuntu-2004-kube-v1.26.7.gz
+--> qemu: VM files in directory: ./output/ubuntu-2004-kube-v1.26.7
